@@ -1,8 +1,9 @@
 <?php
+    require_once("configuracao.php");
     require_once("classBancoDados.php");
     require_once("funcoesDiversas.php");
 
-    $conexao_bd = new BancoDados("localhost");
+    $conexao_bd = new BancoDados($servidorMySQL);
 
     if(!$conexao_bd->abrirConexao()) {
         echo "<h2>Não foi possível conectar com o banco de dados do site</h2><br/>";

@@ -68,6 +68,24 @@ class BancoDados{
     
     // Setters SQL
 
+    public function setINSERT($valores, $tabela = "") : void {
+        if (($tabela != "") && (count($valores) > 0)) {
+            $listaCampos = "";
+            $listaValores = "";
+
+            foreach ($valores as $campo=>$valor) {
+                $listaCampos .= $campo;
+                $listaValores .= $valor;
+
+                if ($campo !== end(array_keys($valores))) {
+                    $listaCampos .= ",";
+                    $listaValores .= ",";
+                }
+            }
+            $this->comandoSQL = "INSERT INTO $tabela($listaCampos) VALUES($listaValores)";
+        }
+    }
+
     public function setSELECT($campos = "", $tabela = "") {
         if(($campos != "") && ($tabela != "")) {
             $this->comandoSQL = "SELECT " . $campos . " FROM " . $tabela;

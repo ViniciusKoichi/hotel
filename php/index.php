@@ -1,4 +1,5 @@
 <?php
+    require_once("configuracao.php"); 
     require_once("classBancoDados.php");
 ?>
 
@@ -101,7 +102,11 @@
                     <a class="cabecalho__menu__link" href="#conteudo" onclick="carregar('formConsultaApartamentos.html')">Consulta</a>
                 </div>
                 <div class="cabecalho__menu__botao">
-                    <a class="cabecalho__menu__link" href="#">Cadastro</a>
+                    <button class="dropbutton">Cadastro</button>
+                    <div class="dropdown__opcoes">
+                        <a onclick="carregar('formCadastraHospede.php')" href="#">Adicionar cliente</a>
+                        <a href="#">Editar cliente</a>
+                    </div>
                 </div>
                 <div class="cabecalho__menu__botao">
                     <a class="cabecalho__menu__link" href="#">Reserva</a>
@@ -123,7 +128,7 @@
             <section class="apresentacao__conteudo">
                 <div class="coluna__esquerda">
                     <?php
-                        $conexao_bd = new BancoDados();
+                        $conexao_bd = new BancoDados($servidorMySQL);
                         if(!$conexao_bd->abrirConexao()) {
                             echo "<p>Erro na conexão com o banco de dados!</br>" . $conexao_bd->getMensagemErro() . "</p>";
                         } else {
