@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Css -->
+        <link rel="stylesheet" href="../styles/style.css" />
+
+        <!-- Scripts -->
+        <!-- <script src="../scripts/jquery-3.7.1.js"></script> -->
+        <script
+            src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"
+            integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY="
+            crossorigin="anonymous"
+        ></script>
+        <link rel="stylesheet" href="../scripts/jquery-ui.css" />
+
+        <!-- Calendário -->
+        <script>
+            $(function () {
+                $("#calendario").datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    showOtherMonths: true,
+                    selectOtherMonths: true,
+                    dateFormat: "dd/mm/yy",
+                    dayNames: [
+                        "Domingo",
+                        "Segunda",
+                        "Terça",
+                        "Quarta",
+                        "Quinta",
+                        "Sexta",
+                        "Sábado",
+                        "Domingo",
+                    ],
+                    dayNamesMin: ["D", "S", "T", "Q", "Q", "S", "S", "D"],
+                    dayNamesShort: [
+                        "Dom",
+                        "Seg",
+                        "Ter",
+                        "Qua",
+                        "Qui",
+                        "Sex",
+                        "Sab",
+                        "Dom",
+                    ],
+                    monthNames: [
+                        "Janeiro",
+                        "Fevereiro",
+                        "Março",
+                        "Abril",
+                        "Maio",
+                        "Junho",
+                        "Julho",
+                        "Agosto",
+                        "Setembro",
+                        "Outubro",
+                        "Novembro",
+                        "Dezembro",
+                    ],
+                    monthNamesShort: [
+                        "Jan",
+                        "Fev",
+                        "Mar",
+                        "Abr",
+                        "Mai",
+                        "Jun",
+                        "Jul",
+                        "Ago",
+                        "Set",
+                        "Out",
+                        "Nov",
+                        "Dez",
+                    ],
+                });
+            });
+        </script>
+
+        <title>Hoteis Orvalho</title>
+    </head>
+    <body>
+        <header class="cabecalho">
+            <nav class="cabecalho__menu">
+                <div class="cabecalho__menu__botao">
+                    <a class="cabecalho__menu__link" href="#">Consulta</a>
+                </div>
+                <div class="cabecalho__menu__botao">
+                    <a class="cabecalho__menu__link" href="#">Cadastro</a>
+                </div>
+                <div class="cabecalho__menu__botao">
+                    <a class="cabecalho__menu__link" href="#">Reserva</a>
+                </div>
+                <div class="cabecalho__menu__botao">
+                    <a class="cabecalho__menu__link" href="#">Hitórico</a>
+                </div>
+                <div class="cabecalho__menu__botao">
+                    <a class="cabecalho__menu__link" href="#">Login</a>
+                </div>
+            </nav>
+        </header>
+
+        <main class="apresentacao">
+            <div class="img__hotel">
+                <h1>HOTEIS ORVALHO</h1>
+                <img class="img__faixada" src="../assets/faixada.jpg" alt="" />
+            </div>
+            <section class="apresentacao__conteudo">
+                <div class="coluna__esquerda">
+                    <p>texto da esquerda</p>
+                </div>
+                <div class="coluna__direita">
+                    <p>texto da direita</p>
+                    <div class="calendario" id="calendario"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="rodape">
+            <p>Desenvolvido por Vinícius Koichi</p>
+        </footer>
+    </body>
+</html>

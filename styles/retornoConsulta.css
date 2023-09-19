@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    box-sizing: border-box;
+}
+
+.retornoConsulta {
+    background-color: rgb(22, 22, 132);
+    padding: 25px;
+    border-radius: 25px;
+}
+
+.retornoConsulta table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.retornoConsulta th, td {
+    border-bottom: 1px solid black;
+}
+
+.retornoConsulta th {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: left;
+    background-color: rgb(22, 22, 132);
+}
+
+.retornoConsulta td {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    background-color: #A7CFFF;
+}

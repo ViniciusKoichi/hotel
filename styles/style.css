@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+    background-color: rgb(230, 230, 230);
+    display: flex;
+    flex-direction: column;
+}
+
+.cabecalho {
+    padding: 3% 50px 0% 50px;
+    width: auto;
+    box-shadow: 0px 1px 0px  rgb(209, 209, 209);
+    background-color: white;
+}
+
+.cabecalho__menu {
+    display: flex;
+    gap: 80px;
+}
+
+.cabecalho__menu__botao {
+    border-radius: 4px 4px;
+    padding: 10px 5px;
+}
+
+.cabecalho__menu__botao:hover {
+    border-bottom: 4px solid rgb(5, 5, 129);
+}
+
+.cabecalho__menu__link { 
+    text-decoration: none;
+    font-weight: 600;
+    color: rgb(64, 62, 62);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: 0px 50px;
+}
+
+.apresentacao__conteudo {
+    border-radius: 10px;
+    padding: 20px 10px;
+    background-color: white;
+}
+
+.img__hotel {
+    display: inline-block;
+    position: relative;
+}
+
+.img__hotel h1 {
+    position: absolute;
+    top: 250px;
+    left:559px;
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: white;
+}
+
+.img__faixada {
+    z-index: -10;
+    width: 100%;
+}
+
+.apresentacao__conteudo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.coluna__esquerda {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    float: left;
+}
+
+.coluna__esquerda__hoteis {
+    padding: 20px;
+    border-radius: 15px;
+
+    color: white;
+    font-weight: 600;
+    background-color: rgb(22, 22, 132);
+}
+
+.coluna__central {
+    float: left;
+    width: 650px;
+}
+
+.formulario {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.5;
+}
+
+.formulario input:focus {
+    background-color: lightblue;
+}
+
+.formulario select {
+    padding: 4px 4px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
+
+.tituloFormulario {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #47C4ED;
+    text-align: center;
+}
+
+
+
+
+footer {
+    padding: 25px;
+    margin-top: 30px;
+
+    background-color: white;
+
+    font-weight: 700;
+    text-align: center;
+}
