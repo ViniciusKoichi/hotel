@@ -6,6 +6,7 @@ require_once 'configuracao.php';
 require_once 'classBancoDados.php';
 require_once 'funcoesDiversas.php';
 
+
 $dataInclusao = date('d/m/Y');
 $nome = $_REQUEST['nomeHospede'];
 $dia = $_REQUEST['diaNascimento'];
@@ -36,7 +37,7 @@ if (trim($nome) == "") {
 }
 
 if ((trim($dia) != "") && (trim($mes) != "") && (trim($ano) != "")) {
-    if (!checkdate($mes,$dia,$ano)) {
+    if (!checkdate($mes, $dia, $ano)) {
         $erroDados = TRUE;
         $mensagemErro .= "<h3>Data de nascimento inválida...</h3>";
     }
@@ -45,32 +46,36 @@ if ((trim($dia) != "") && (trim($mes) != "") && (trim($ano) != "")) {
     $mensagemErro .= "<h3>Data de nascimento obrigatória...</h3>";
 }
 
-if (trim($cpf) != "") {
-    if (!validaCPF($cpf)) {
-        $erroDados = TRUE;
-        $mensagemErro .= "<h3>Número CPF inválido...</h3>";
-    }
-} else {
-    $erroDados = TRUE;
-    $mensagemErro .= "<h3>Número do CPF obrigatório...</h3>";
-}
+//     /***************************
+//      * ARRUMAR ASSIM QUE PUDER *
+//      ***************************/
 
-if(trim($rg) != "") {
+// // if(trim($CPF) != "") {
+// //     if(!validaCPF($CPF)) {
+// //         $erroDados = TRUE;
+// //         $mensagemErro .= "<h3>Número do CPF inválido...</h3>";
+// //     }
+// // } else {
+// //     $erroDados = TRUE;
+// //     $mensagemErro .= "<h3>Número do CPF obrigatório...</h3>";
+// // }
+
+if(trim($rg) == "") {
     $erroDados = TRUE;
     $mensagemErro .= "<h3>Número do RG obrigatório...</h3>";
 }
 
-if(trim($endereco) != "") {
+if(trim($endereco) == "") {
     $erroDados = TRUE;
     $mensagemErro .= "<h3>Endereço obrigatório...</h3>";
 }
 
-if(trim($bairro) != "") {
+if(trim($bairro) == "") {
     $erroDados = TRUE;
     $mensagemErro .= "<h3>Bairro obrigatório...</h3>";
 }
 
-if(trim($cidade) != "") {
+if(trim($cidade) == "") {
     $erroDados = TRUE;
     $mensagemErro .= "<h3>Cidade obrigatória...</h3>";
 }
@@ -85,17 +90,18 @@ if(trim($cep) != "") {
     $mensagemErro .= "<h3>CEP obrigatório...</h3>";
 }
 
-if(trim($telefone) != "") {
+if(trim($telefone) == "") {
     $erroDados = TRUE;
     $mensagemErro .= "<h3>Telefone obrigatório...</h3>";
 }
 
-if(trim($nomeUsuario) != "") {
+
+if(trim($nomeUsuario) == "") {
     $erroDados = TRUE;
     $mensagemErro .= "<h3>Usuário obrigatório...</h3>";
 }
 
-if(trim($senhaAcesso) != "") {
+if(trim($senhaAcesso) == "") {
     $erroDados = TRUE;
     $mensagemErro .= "<h3>Senha obrigatória...</h3>";
 }

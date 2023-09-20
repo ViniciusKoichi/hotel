@@ -24,11 +24,16 @@
             integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY="
             crossorigin="anonymous"
         ></script>
-        <script src="http://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
         <link rel="stylesheet" href="../scripts/jquery-ui.css" />
 
         <script>
             function carregar(pagina){$("#conteudo").load(pagina);}
+            function showOptions() {
+                opcoes.classList.add('show')
+            }
+            function removeOptions() {
+                opcoes.classList.remove('show')
+            }
         </script>
 
         <!-- Calendário -->
@@ -102,10 +107,10 @@
                     <a class="cabecalho__menu__link" href="#conteudo" onclick="carregar('formConsultaApartamentos.html')">Consulta</a>
                 </div>
                 <div class="cabecalho__menu__botao">
-                    <button class="dropbutton">Cadastro</button>
-                    <div class="dropdown__opcoes">
-                        <a onclick="carregar('formCadastraHospede.php')" href="#">Adicionar cliente</a>
-                        <a href="#">Editar cliente</a>
+                    <a onclick="showOptions()" class="cabecalho__menu__link">Cadastro</a>
+                    <div id="opcoes" class="cabecalho__menu__link__opcoes">
+                        <a onclick="carregar('formCadastraHospede.php'),removeOptions()" href="#conteudo">Adicionar cliente</a>
+                        <a onclick="removeOptions()" href="#">Editar cliente</a>
                     </div>
                 </div>
                 <div class="cabecalho__menu__botao">

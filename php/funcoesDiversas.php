@@ -11,11 +11,11 @@ require_once 'classBancoDados.php';
         return $DataInvertida;
     }
     
-    function Estados($ordemTabulacao)
+    function estados($ordemTabulacao)
     {
         global $servidorMySQL;
    
-        $listaEstados = "<select name='Estado' size='1' tabindex=$ordemTabulacao>";
+        $listaEstados = "<select name='estado' size='1' tabindex=$ordemTabulacao>";
         
         $conexao_bd = new BancoDados($servidorMySQL);
         
@@ -29,7 +29,7 @@ require_once 'classBancoDados.php';
                 
                 if($numeroRegistros > 0) {
                     while($registros = $dataSet->fetch_assoc()) {
-                        $listaEstados .= "<option value='" . $registros["UF"] . "'>"
+                        $listaEstados .= "<option value='" .$registros["UF"]. "'>"
                                 . $registros["Estado"] . "</option>";
                     }
                 }
@@ -55,47 +55,76 @@ require_once 'classBancoDados.php';
         return trim($novoValor);
     }
     
-    function validaCPF($numeroCPF)
-    {
-        $CPF = soCodigo($numeroCPF);
+    // function validaCPF($numeroCPF)
+    // {
+    //     $CPF = soDigito($numeroCPF);
         
-        if($CPF === "") {
-            $retorno = FALSE;
-        } elseif(strlen($CPF) == 11) {
-            $soma = 0;
+    //     if($CPF === "") {
+    //         $retorno = FALSE;
+    //     } elseif(strlen($CPF) == 11) {
+    //         $soma = 0;
             
-            for($contador = 0; $contador <9; $contador++) {
-                $calculo = $CPF[8-$contador]*($contador+2);
-                $soma += $calculo;
-            }
+    //         for($contador = 0; $contador <9; $contador++) {
+    //             $calculo = $CPF[8-$contador]*($contador+2);
+    //             $soma += $calculo;
+    //         }
             
-            $digito1 = 11 - ($soma % 11);
+    //         $digito1 = 11 - ($soma % 11);
             
-            if($digito1 > 9) {
-                $digito1 = 0;
-            }
+    //         if($digito1 > 9) {
+    //             $digito1 = 0;
+    //         }
             
-            $CPFNovo = substr($CPF,0,9);
-            $CPFNovo .= $digito1;
-            $soma = 0;
+    //         $CPFNovo = substr($CPF,0,9);
+    //         $CPFNovo .= $digito1;
+    //         $soma = 0;
             
-            for($contador = 0; $contador < 10; $contador++) {
-                $calculo = $CPFNovo[9-$contador]*($contador+2);
-                $soma += $calculo;
-            }
+    //         for($contador = 0; $contador < 10; $contador++) {
+    //             $calculo = $CPFNovo[9-$contador]*($contador+2);
+    //             $soma += $calculo;
+    //         }
             
-            $digito2 = 11 - ($soma % 11);
+    //         $digito2 = 11 - ($soma % 11);
             
-            if($digito2 > 9) {
-                $digito2 = 0;
-            }
+    //         if($digito2 > 9) {
+    //             $digito2 = 0;
+    //         }
             
-            $retorno = ($digito1 == ((int)$CPF[9])) && ($digito2 == ((int)$CPF[10]));
-        } else 
-            $retorno = FALSE;
+    //         $retorno = ($digito1 == ((int)$CPF[9])) && ($digito2 == ((int)$CPF[10]));
+    //     } else 
+    //         $retorno = FALSE;
         
-        return $retorno;
+    //     return $retorno;
+    // }
+
+    function validaCPF($cpf) {
+ 
+    // Extrai somente os números
+    $cpf = preg_replace( '/[^0-9]/is', '', $cpf );
+     
+    // Verifica se foi informado todos os digitos corretamente
+    if (strlen($cpf) != 11) {
+        return false;
     }
+
+    // Verifica se foi informada uma sequência de digitos repetidos. Ex: 111.111.111-11
+    if (preg_match('/(\d)\1{10}/', $cpf)) {
+        return false;
+    }
+
+    // Faz o calculo para validar o CPF
+    for ($t = 9; $t < 11; $t++) {
+        for ($d = 0, $c = 0; $c < $t; $c++) {
+            $d += $cpf[$c] * (($t + 1) - $c);
+        }
+        $d = ((10 * $d) % 11) % 10;
+        if ($cpf[$c] != $d) {
+            return false;
+        }
+    }
+    return $cpf;
+
+}
     
     function validaCEP($CEP)
     {
@@ -104,7 +133,7 @@ require_once 'classBancoDados.php';
         if(strlen($novoCEP < 8)) {
             $retorno = FALSE;
         } else {
-            $retorno = ereg("^([0-9]){5}-?([0-9]){3}", $CEP);
+            $retorno = preg_match("/^([0-9]){5}-?([0-9]){3}/", $CEP);
         }
         return $retorno;
     }

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../styles/loginStyle.css">
+
+    <!-- Scripts -->
+    <script
+            src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"
+        ></script>
+
+        <script>
+            $(document).ready(function() {
+                $("#btnConfirmar").click(function() {
+                    var nomeUsuario = $("input[name = usuario]").val();
+                    var senhaAcesso = $("input=[name = senha]").val();
+
+                    $.ajax({
+                        url: "efetuarLogin.php",
+                        dataType: "html",
+                        data: {
+                            "usuario": nomeUsuario,
+                            "senha": senhaAcesso
+                        },
+                        success: function(response) {
+                            $("div#retorno").html(response);
+                            setTimeout("location.href = 'index.php'", 5000);
+                        }
+                    });
+                });
+            });
+        </script>
+
+        <script language="JavaScript">
+            function fecharFormulario() {
+                location.href="index.php";
+            }
+        </script>
+    <title>Login</title>
+</head>
+<body>
+    <div class="login__pagina">
+        <div class="login__imagem"></div>
+        <div class="login__formulario">
+            <form name="formLogin">
+                <p class="login__legenda">Usuario: <input name="usuario" id="usuario" tabindex="1" size="20" maxlength="20" type="text"></p>
+                <p class="login__legenda">Senha: <input name="senha" id="senha" tabindex="2" size="12" maxlength="12" type="password"></p>
+                <button type="button" name="btnConfirmar" id="btnConfirmar">Confirmar</button>
+                <button type="button" name="btnCancelar" id="btnCancelar" onclick="fecharFormulario()">Cancelar</button>
+            </form>
+            <div class="login__mensagem" id="retorno"></div>
+        </div>
+    </div>
+</body>
+</html>

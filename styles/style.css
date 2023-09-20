@@ -26,8 +26,10 @@ body {
 }
 
 .cabecalho__menu__botao {
+    border-bottom: 4px solid transparent;
     border-radius: 4px 4px;
     padding: 10px 5px;
+    cursor: pointer;
 }
 
 .cabecalho__menu__botao:hover {
@@ -39,6 +41,16 @@ body {
     font-weight: 600;
     color: rgb(64, 62, 62);
 }
+
+.cabecalho__menu__link__opcoes {
+    display: none;
+}
+
+.show {
+    display: flex;
+    flex-direction: column;
+}
+
 
 main {
     display: flex;
