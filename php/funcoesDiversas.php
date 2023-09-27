@@ -142,3 +142,30 @@ require_once 'classBancoDados.php';
     {
         return "'" . $valor . "'";
     }
+
+    function listaHoteis() {
+        $hoteis = "<select name='hotel' size='1' tabindex='1'>";
+
+        $conexao_bd = new BancoDados($GLOBALS["servidorMySQL"]);
+
+        if ($conexao_bd->abrirConexao()) {
+            $conexao_bd->setSELECT("Codigo_Hotel, Endereco, Cidade, UF", "hoteis");
+            $conexao_bd->setORDER("Endereco, Cidade, UF");
+
+            if($conexao_bd->execSELECT()) {
+                $numeroRegistros = $conexao_bd->getTotalRegistros();
+                $dataSet = $conexao_bd->getDataSet();
+
+                if($numeroRegistros > 0) {
+                    while($registros = $dataSet->fetch_assoc()) {
+                        $conteudoLista = $registros["Endereco"]. " | " .$registros["Cidade"]. "/" .$registros["UF"];
+                        $hoteis .= "<option value='".$registros["Codigo_Hotel"]."'>$conteudoLista</option>";
+                    }
+                }
+            }
+        }
+
+        $conexao_bd->fecharConexao();
+        $hoteis .= "</select>";
+        return $hoteis;
+    }

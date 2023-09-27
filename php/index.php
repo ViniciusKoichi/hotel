@@ -1,6 +1,7 @@
 <?php
     require_once("configuracao.php"); 
     require_once("classBancoDados.php");
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -114,13 +115,18 @@
                     </div>
                 </div>
                 <div class="cabecalho__menu__botao">
-                    <a class="cabecalho__menu__link" href="#">Reserva</a>
+                    <a class="cabecalho__menu__link" href="#conteudo" onclick="carregar('formReserva.php')">Reserva</a>
                 </div>
                 <div class="cabecalho__menu__botao">
-                    <a class="cabecalho__menu__link" href="#">Hitórico</a>
+                    <a class="cabecalho__menu__link" href="#conteudo" onclick="carregar('historicoHospedagem.php')">Hitórico</a>
                 </div>
                 <div class="cabecalho__menu__botao">
-                    <a class="cabecalho__menu__link" href="#">Login</a>
+                    <a onclick="carregar('login.html')" class="cabecalho__menu__link" href="#conteudo">Login</a>
+                </div>
+                <div class="cabecalho__menu__botao">
+                        <?php 
+                            echo "<p>Usuário: " .$_SESSION["NOME_USUARIO"]. "</p>";
+                        ?>                  
                 </div>
             </nav>
         </header>

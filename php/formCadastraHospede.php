@@ -29,7 +29,7 @@
                     var complemento = $("input[name = complemento]").val();
                     var bairro = $("input[name = bairro]").val();
                     var cidade = $("input[name = cidade]").val();
-                    var estado = $("input[name = estado]").val();
+                    var estado = $("select[name = estado]").val();
                     var cep = $("input[name = cep]").val();
                     var telefone = $("input[name = telefone]").val();
                     var celular = $("input[name = celular]").val();

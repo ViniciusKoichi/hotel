@@ -8,6 +8,7 @@ class BancoDados{
     protected $comandoSQL;
     protected $dataSet;
     protected $numeroRegistros;
+    protected $resultado;
 
     //construct
 
@@ -77,7 +78,7 @@ class BancoDados{
                 $listaCampos .= $campo;
                 $listaValores .= $valor;
 
-                if ($campo !== end(array_keys($valores))) {
+                if ($valor !== end($valores)) {
                     $listaCampos .= ",";
                     $listaValores .= ",";
                 }
@@ -103,6 +104,21 @@ class BancoDados{
         if($campoOrdenacao != "") {
             $this->comandoSQL .= " ORDER BY ";
             $this->comandoSQL .= $campoOrdenacao;
+        }
+    }
+
+    public function setUPDATE($valores, $tabela = "") {
+        if(($tabela != "") && (count($valores) > 0)) {
+            $camposValores = "";
+
+            foreach($valores as $campo=>$valor) {
+                $camposValores .= $campo. " = " .$valor;
+
+                if ($valor !== end($valores)) {
+                    $camposValores .= ", ";
+                }
+            }
+            $this->comandoSQL = "UPDATE $tabela SET $camposValores";
         }
     }
 
@@ -136,4 +152,20 @@ class BancoDados{
             return FALSE;
         }
     }
-}
+
+    public function execUPDATE() {
+        if($this->comandoSQL != "") {           
+            $this->resultado = $this->conexaoBanco->query($this->comandoSQL);
+
+            if ($this->resultado == false) {
+                return FALSE;
+            } elseif ($this->conexaoBanco->affected_rows == 0) {
+                    return FALSE;
+            } else {
+                return TRUE;
+            }  
+        } else {
+            return FALSE;
+        }
+    }
+} 
